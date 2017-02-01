@@ -21,7 +21,7 @@ public class generate_piste : MonoBehaviour {
 					if (Physics.Raycast (new Vector3 (x, collider.bounds.max.y, z), Vector3.down, out hit_info)) {
 						var obstacle = obstacles [Random.Range (0, obstacles.Length)];
 						var go = GameObject.Instantiate<GameObject> (obstacle, hit_info.point, obstacle.transform.rotation, transform);
-						go.transform.localScale = Vector3.one*2;
+						go.transform.localScale = obstacle.transform.localScale;
 					}
 				}
 

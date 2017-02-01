@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class scroller : MonoBehaviour {
 
 	public GameObject[] parts;
 	public float start_speed=0.1f;
 	public float acceleration = 0.001f;
+
+	public Slider slider;
 
 	private List<GameObject> current_spawns = new List<GameObject>();
 
@@ -41,6 +44,9 @@ public class scroller : MonoBehaviour {
 			var go = GameObject.Instantiate<GameObject> (part,new Vector3(0,0,spawn_z),part.transform.rotation);
 			current_spawns.Add (go);
 		}
-		
+
+		if (slider) {
+			slider.value = Mathf.Clamp (start_speed, slider.minValue, slider.maxValue);
+		}
 	}
 }
